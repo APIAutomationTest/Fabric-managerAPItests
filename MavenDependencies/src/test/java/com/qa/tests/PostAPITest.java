@@ -1,5 +1,8 @@
 package com.qa.tests;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -56,6 +59,7 @@ public class PostAPITest extends TestBase{
 	String usersResObj;
 
 	
+
 @BeforeMethod
 	
 	public void setUp () throws ClientProtocolException, IOException {
@@ -127,7 +131,7 @@ closeableHttpResponse = restClient.post(url, requestString, headerMap);// call t
 //status code
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-Assert.assertEquals(statusCode, testBase.RESPONSE_STATUS_CODE_200);
+AssertJUnit.assertEquals(statusCode, testBase.RESPONSE_STATUS_CODE_200);
 
 //JosonString
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
@@ -136,7 +140,7 @@ JSONObject responseJson = new JSONObject(responseString);
 
 System.out.println("The response from API is"+responseJson);
 
-
+System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 // json to java object
 	Token usersResObj = mapper.readValue(responseString, Token.class); // actual users object
@@ -173,6 +177,8 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API computeNodes"+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
+
 
 }
 // get method customers
@@ -200,6 +206,8 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API customers "+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
+
 
 }
 //get method customers
@@ -227,6 +235,8 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API computeNodeGroups "+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
+
 
 }
 @Test(priority =5)
@@ -253,6 +263,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API networks "+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 }
 @Test(priority =6)
@@ -279,6 +290,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API routingInstances "+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 }
 @Test(priority =7)
@@ -305,6 +317,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API networkPlanes "+responseString);
+System.out.println("-----------------------------------------------------------------------------------------------------------");
 
 }
 @Test(priority =8)
