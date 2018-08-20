@@ -2,72 +2,72 @@
 <testng-results skipped="0" failed="0" total="8" passed="8">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1806" started-at="2018-08-17T21:00:43Z" finished-at="2018-08-17T21:00:45Z">
+  <suite name="Default suite" duration-ms="1905" started-at="2018-08-20T14:53:46Z" finished-at="2018-08-20T14:53:48Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1806" started-at="2018-08-17T21:00:43Z" finished-at="2018-08-17T21:00:45Z">
+    <test name="Default test" duration-ms="1905" started-at="2018-08-20T14:53:46Z" finished-at="2018-08-20T14:53:48Z">
       <class name="com.qa.tests.PostAPITest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="5" started-at="2018-08-17T16:00:43Z" finished-at="2018-08-17T16:00:43Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="5" started-at="2018-08-20T09:53:46Z" finished-at="2018-08-20T09:53:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="postAPITest()[pri:1, instance:com.qa.tests.PostAPITest@58651fd0]" name="postAPITest" duration-ms="1334" started-at="2018-08-17T16:00:43Z" finished-at="2018-08-17T16:00:44Z">
+        <test-method status="PASS" signature="postAPITest()[pri:1, instance:com.qa.tests.PostAPITest@39c0f4a]" name="postAPITest" duration-ms="1436" started-at="2018-08-20T09:53:46Z" finished-at="2018-08-20T09:53:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postAPITest -->
-        <test-method status="PASS" signature="GetAPITest()[pri:2, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest" duration-ms="269" started-at="2018-08-17T16:00:44Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-20T09:53:47Z" finished-at="2018-08-20T09:53:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="GetAPITest()[pri:2, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest" duration-ms="260" started-at="2018-08-20T09:53:47Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-17T16:00:44Z" finished-at="2018-08-17T16:00:44Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="1" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="GetAPITest1()[pri:3, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest1" duration-ms="36" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="GetAPITest1()[pri:3, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest1" duration-ms="29" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest1 -->
-        <test-method status="PASS" signature="GetAPITest2()[pri:4, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest2" duration-ms="27" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="GetAPITest2()[pri:4, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest2" duration-ms="28" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest2 -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="GetAPITest3()[pri:5, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest3" duration-ms="27" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="GetAPITest3()[pri:5, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest3" duration-ms="28" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest3 -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="1" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="10" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="GetAPITest4()[pri:6, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest4" duration-ms="25" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="GetAPITest4()[pri:6, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest4" duration-ms="26" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest4 -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="1" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="1" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="GetAPITest5()[pri:7, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest5" duration-ms="29" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="GetAPITest5()[pri:7, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest5" duration-ms="27" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest5 -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@58651fd0]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.tests.PostAPITest@39c0f4a]" name="setUp" is-config="true" duration-ms="0" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="GetAPITest6()[pri:8, instance:com.qa.tests.PostAPITest@58651fd0]" name="GetAPITest6" duration-ms="30" started-at="2018-08-17T16:00:45Z" finished-at="2018-08-17T16:00:45Z">
+        <test-method status="PASS" signature="GetAPITest6()[pri:8, instance:com.qa.tests.PostAPITest@39c0f4a]" name="GetAPITest6" duration-ms="31" started-at="2018-08-20T09:53:48Z" finished-at="2018-08-20T09:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetAPITest6 -->
