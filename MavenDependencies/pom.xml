@@ -36,7 +36,7 @@
 				<!-- Suite testng xml file to consider for test execution -->
 				<suiteXmlFiles>
 				<suiteXmlFile>pom.xml</suiteXmlFile>
-				<suiteXmlFile>suites-test-testng.xml</suiteXmlFile>
+				<suiteXmlFile>suites-test-pom.xml</suiteXmlFile>
 				</suiteXmlFiles>
 			</configuration>
 			</plugin>
