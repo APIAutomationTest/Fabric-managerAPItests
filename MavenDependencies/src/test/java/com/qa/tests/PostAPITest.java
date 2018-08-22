@@ -241,6 +241,10 @@ System.out.println("Header Array computeNodeGroups-->"+allHeaders);
 
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_201, "Status code is not 201");
 
 System.out.println("The response from get API computeNodeGroups "+responseString);
 System.out.println("-----------------------------------------------------------------------------------------------------------");
