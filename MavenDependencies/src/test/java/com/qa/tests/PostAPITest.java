@@ -183,6 +183,10 @@ System.out.println("Header Array-->"+allHeaders);
 
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
 System.out.println("The response from get API computeNodes"+responseString);
 System.out.println("-----------------------------------------------------------------------------------------------------------");
@@ -211,6 +215,13 @@ for(Header header : headersArray) {
 System.out.println("Header Array customers-->"+allHeaders);
 
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
+
+
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+
 
 
 System.out.println("The response from get API customers "+responseString);
@@ -274,6 +285,13 @@ System.out.println("Header Array networks-->"+allHeaders);
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
 
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+
+
+
 System.out.println("The response from get API networks "+responseString);
 System.out.println("-----------------------------------------------------------------------------------------------------------");
 
@@ -301,6 +319,12 @@ System.out.println("Header Array routingInstances-->"+allHeaders);
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
 
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+
+
 System.out.println("The response from get API routingInstances "+responseString);
 System.out.println("-----------------------------------------------------------------------------------------------------------");
 
@@ -326,6 +350,13 @@ for(Header header : headersArray) {
 System.out.println("Header Array networkPlanes-->"+allHeaders);
 
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
+
+
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+
 
 
 System.out.println("The response from get API networkPlanes "+responseString);
@@ -356,6 +387,13 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 System.out.println("The response from get API switches "+responseString);
+
+
+int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+System.out.println("Statuc Code-->"+statusCode);
+
+Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+
 
 }
 }
