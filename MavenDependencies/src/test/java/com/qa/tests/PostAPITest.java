@@ -33,7 +33,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.base.TestBase;
 import com.qa.client.RestClient;
-import com.qa.data.*;	
+import com.qa.data.*;
+import com.qa.util.TestUtil;	
 
 
 public class PostAPITest extends TestBase{
@@ -66,7 +67,7 @@ public class PostAPITest extends TestBase{
 	String apiUrl7;
 	String usersResObj;
 
-	
+
 
 @BeforeMethod
 	
@@ -161,7 +162,7 @@ System.out.println("------------------------------------------------------------
 }
 // get method computeNodes
 @Test(priority =2)
-public void GetAPITest() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestcomputeNodes() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -181,12 +182,41 @@ for(Header header : headersArray) {
 
 System.out.println("Header Array-->"+allHeaders);
 
+//Json String
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
+JSONObject responseJson = new JSONObject(responseString);
 
+//Status code
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
 System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
+/*
+ * single value assertion
+// per page
+String s = TestUtil.getValueByJPath(responseJson, "/per_page");
+System.out.println("value of per page is -->"+ perPageValue);
+
+Assert.assertEquals(perPageValue 3);
+
+
+//total
+
+String totalValue = TestUtil.getValueByJPath(responseJson, "/total");
+System.out.println("value of total is-->"+ totalValue);
+Assert.assertEquals(Integer.parseInt(totalValue), 12);
+*/
+
+// get value from JSON path 
+
+String id =TestUtil.getValueByJPath(responseJson, "/items[0]/id");
+String locationId =TestUtil.getValueByJPath(responseJson, "/items[0]/locationId");
+String name =TestUtil.getValueByJPath(responseJson, "/items[0]/name");
+
+
+System.out.println(id);
+System.out.println(locationId);
+System.out.println(name);
 
 System.out.println("The response from get API computeNodes"+responseString);
 System.out.println("-----------------------------------------------------------------------------------------------------------");
@@ -195,7 +225,7 @@ System.out.println("------------------------------------------------------------
 }
 // get method customers
 @Test(priority =3)
-public void GetAPITest1() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestcustomers() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -229,9 +259,9 @@ System.out.println("------------------------------------------------------------
 
 
 }
-//get method customers
+//get method computeNodeGroups
 @Test(priority =4)
-public void GetAPITest2() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestcomputeNodeGroups() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -263,7 +293,7 @@ System.out.println("------------------------------------------------------------
 
 }
 @Test(priority =5)
-public void GetAPITest3() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestnetworks() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -297,7 +327,7 @@ System.out.println("------------------------------------------------------------
 
 }
 @Test(priority =6)
-public void GetAPITest4() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestroutingInstances() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -330,7 +360,7 @@ System.out.println("------------------------------------------------------------
 
 }
 @Test(priority =7)
-public void GetAPITest5() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestnetworkPlanes() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);
@@ -364,7 +394,7 @@ System.out.println("------------------------------------------------------------
 
 }
 @Test(priority =8)
-public void GetAPITest6() throws JsonGenerationException, JsonMappingException, IOException {
+public void GetAPITestswitches() throws JsonGenerationException, JsonMappingException, IOException {
 restClient = new RestClient();
 HashMap<String, String> headerMap = new HashMap<String, String>();
 headerMap.put("Authorization", "bearer "+usersResObj);

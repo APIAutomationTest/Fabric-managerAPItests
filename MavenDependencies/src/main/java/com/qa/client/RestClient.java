@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 public class RestClient {
 
+	//get request
 	public  CloseableHttpResponse get(String url) throws ClientProtocolException, IOException {
 		return this.get(url, new HashMap<String, String>());
 	}
