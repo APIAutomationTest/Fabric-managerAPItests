@@ -184,7 +184,7 @@ System.out.println("Header Array-->"+allHeaders);
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
@@ -218,7 +218,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
@@ -253,7 +253,7 @@ System.out.println("Header Array computeNodeGroups-->"+allHeaders);
 String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"UTF-8");
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_201, "Status code is not 201");
 
@@ -286,7 +286,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
@@ -320,7 +320,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
@@ -353,7 +353,7 @@ String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(),"
 
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
@@ -390,7 +390,7 @@ System.out.println("The response from get API switches "+responseString);
 
 
 int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-System.out.println("Statuc Code-->"+statusCode);
+System.out.println("Status Code-->"+statusCode);
 
 Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
