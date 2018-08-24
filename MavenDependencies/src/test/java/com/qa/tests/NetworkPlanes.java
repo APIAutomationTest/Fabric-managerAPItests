@@ -1,5 +1,6 @@
 package com.qa.tests;
 
+import org.testng.annotations.Test;
 import java.io.IOException;
 
 import org.apache.http.client.ClientProtocolException;
