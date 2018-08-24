@@ -16,5 +16,7 @@ public class Networks extends TestBase {
 	public void get() throws ClientProtocolException, IOException {
 		JSONObject response = super.get(Networks.url);
 		// do other assertions
+		
+		System.out.println("---------------------------------------------------------------------------------------------");
 	}
 }

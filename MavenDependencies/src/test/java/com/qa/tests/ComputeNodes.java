@@ -16,5 +16,8 @@ public class ComputeNodes extends TestBase {
 	public void get() throws ClientProtocolException, IOException {
 		JSONObject response = super.get(ComputeNodes.url);
 		// do other assertions
+		
+		
+		System.out.println("---------------------------------------------------------------------------------------------");
 	}
 }
