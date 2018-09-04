@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.test.maven</groupId>
+  <artifactId>sample-maven-build</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>sample-maven-build</name>
+  <url>http://maven.apache.org</url>
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <jre.level>1.7</jre.level>
+		<jdk.level>1.7</jdk.level>
+  </properties>
+<build>
+<!-- Source directory configuration -->
+        <!--  sourceDirectory>APIAutomationSuite</sourceDirectory> -->
+		<plugins>
+			<!-- Compiler plug-in -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.level}</source>
+					<target>${jdk.level}</target>
+				</configuration>
+			</plugin>
+			<!-- Below plug-in is used to execute tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+				
+				
+			</configuration>
+
+			</plugin>
+		</plugins>
+		
+	</build>
+  <dependencies>
+    
+   
+ 
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.3.5</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.6</version>
+</dependency>
+
+<dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20180130</version>
+    </dependency>
+
+<dependency>
+        <groupId>com.relevantcodes</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>2.41.0</version>
+    </dependency>
+    
+<dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.3.5</version>
+ 
+ 
+</dependency>
+<dependency>
+<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>3.13.0</version>
+</dependency>
+<dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-server</artifactId>
+        <version>3.0.1</version>
+    </dependency> 
+  
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.9.10</version>
+    <scope>test</scope>
+  </dependency>
+ 
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.6</version>
+</dependency>
+	
+  </dependencies>
+  </project>
+
