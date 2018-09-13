@@ -1,5 +1,6 @@
 package com.qa.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Collections;
@@ -16,21 +17,29 @@ public class CustomersTest extends TestBase<Customers, Object> {
 		super(Customers.class, Object.class);
 	}
 
-	private static String url =
-		TestBase.prop.getProperty("URL_integration") + TestBase.prop.getProperty("serviceURL_customers");
-	private static String getUrl2 = TestBase.prop.getProperty("URL_integration")
+	private static String customers =
+		TestBase.prop.getProperty("API_URL") + TestBase.prop.getProperty("serviceURL_customers");
+	private static String CustomerLocations = TestBase.prop.getProperty("API_URL")
 			+ TestBase.prop.getProperty("serviceURL_CustomerLocations");
 	
-	//public CustomersTest() {
-		//super(Customers.class, Object.class);
+	
 	@Test
 	public void getCustomers() throws ClientProtocolException, IOException {
-		Customers response = super.get(url);
-		// do other assertions
+		Customers response = super.get(customers);
+		        // 1. Has return value
+				Assert.assertNotNull(response);
+
+				// 2. Has non-empty name
+				Assert.assertTrue(response.items.size() > 0);
+				// 3. Has non-empty name
+				Assert.assertNotNull(response.items.get(0).name);
+				Assert.assertTrue(response.items.get(0).name.length() > 0);		
+
+
 		
 		System.out.println("---------------------------------------------------------------------------------------------");
 	}
-	/*
+	
 	@Test
 	public void post() throws ClientProtocolException, IOException {
 		Random r = new Random();
@@ -44,20 +53,26 @@ public class CustomersTest extends TestBase<Customers, Object> {
 			}}));
 		}}.toString();
 		
-		Object response = super.post(url, postBody);
+		Object response = super.post(customers, postBody);
 		// do other assertions
 		
 		System.out.println("---------------------------------------------------------------------------------------------");
-		*/
+	}
 	
 	@Test
-	public void getComputeHypervisor() throws ClientProtocolException, IOException {
-		super.get(getUrl2, TestBase.RESPONSE_STATUS_CODE_200);
-		;
+	public void getCustomerLocation() throws ClientProtocolException, IOException {
+		Customers response = super.get(CustomerLocations);
+        // 1. Has return value
+		Assert.assertNotNull(response);
 
-		// do other assertions
+		// 2. Has non-empty name
+		Assert.assertTrue(response.items.size() > 0);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.items.get(0).name);
+		Assert.assertTrue(response.items.get(0).name.length() > 0);		
 
 		System.out.println(
 			"---------------------------------------------------------------------------------------------");
+
 }
 }
