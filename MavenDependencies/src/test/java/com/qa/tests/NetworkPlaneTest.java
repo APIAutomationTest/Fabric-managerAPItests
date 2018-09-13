@@ -1,5 +1,6 @@
 package com.qa.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
 
@@ -15,13 +16,21 @@ public class NetworkPlaneTest extends TestBase<NetworkPlanes, Object> {
 	}
 
 	private static String url =
-		TestBase.prop.getProperty("URL_integration") + TestBase.prop.getProperty("serviceURL_networkPlanes");
+		TestBase.prop.getProperty("API_URL") + TestBase.prop.getProperty("serviceURL_networkPlanes");
 	
 	@Test
 	public void get() throws ClientProtocolException, IOException {
 		NetworkPlanes response = super.get(url);
 		// do other assertions
 		
+		// 1. Has return value
+		Assert.assertNotNull(response);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.name);
+		Assert.assertTrue(response.name.length() > 0);		
+
 		System.out.println("---------------------------------------------------------------------------------------------");
 	}
 }
+
+
