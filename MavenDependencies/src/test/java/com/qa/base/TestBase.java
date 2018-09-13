@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.client.RestClient;
 import com.qa.data.AuthenticationRequest;
 import com.qa.data.Token;
+import com.qa.util.TestUtil;
 
 public abstract class TestBase<GetResponseType, PostResponseType> {
 
@@ -94,7 +95,9 @@ public abstract class TestBase<GetResponseType, PostResponseType> {
 		// JosonString
 		String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
 		
+		JSONObject responseJson = new JSONObject(responseString);
 
+		
 		// json to java object
 		Token usersResObj = MAPPER.readValue(responseString, Token.class); // actual users object
 		// System.out.println(usersResObj);
