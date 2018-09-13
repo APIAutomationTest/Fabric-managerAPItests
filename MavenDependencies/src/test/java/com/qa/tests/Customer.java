@@ -7,4 +7,6 @@ public class Customer {
   	public String type;
   	public String code;
   	public boolean isEntitled;
+  
+  	
 }
