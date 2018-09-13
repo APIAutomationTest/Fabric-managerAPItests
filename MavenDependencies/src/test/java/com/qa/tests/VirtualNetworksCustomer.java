@@ -4,3 +4,4 @@ public class VirtualNetworksCustomer {
 	public int id;
 	public String name;
 }
+
