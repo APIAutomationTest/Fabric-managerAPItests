@@ -1,6 +1,6 @@
 package com.qa.tests;
 
 public class VirtualNetworkstype {
-	public int id;
+	public Integer id;
 	public String name;
 }
