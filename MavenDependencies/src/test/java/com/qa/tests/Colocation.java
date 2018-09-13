@@ -12,5 +12,8 @@ public class Colocation {
   	public int availablePorts;
   	public int usedPorts;
   	public List<Colocation> speeds;
+  	public String portType;
+  	public String speed;
+  	public String type;
 
 }
