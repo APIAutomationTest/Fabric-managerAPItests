@@ -1,5 +1,6 @@
 package com.qa.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,12 +14,16 @@ import com.qa.base.TestBase;
 import com.qa.base.TestHelper;
 
 public class NetworksTest extends TestBase<Networks, Object> {
-	private static String getUrl =
-		TestBase.prop.getProperty("URL_integration") + TestBase.prop.getProperty("serviceURL_networks");
+	private static String networks =
+		TestBase.prop.getProperty("API_URL") + TestBase.prop.getProperty("serviceURL_networks");
+	private static String ChildNetworks = TestBase.prop.getProperty("API_URL")
+			+ TestBase.prop.getProperty("serviceURL_ChildNetworks");
+	
+	
 	
 	//1
-	private static String getPostUrl() {
-		return TestBase.prop.getProperty("URL_integration") +
+	private static String postNetworks() {
+		return TestBase.prop.getProperty("API_URL") +
 				String.format(TestBase.prop.getProperty("serviceURL_postNetworks"));
 	}
 	
@@ -27,13 +32,30 @@ public class NetworksTest extends TestBase<Networks, Object> {
 	}
 	
 	@Test
-	public void get() throws ClientProtocolException, IOException {
-		Networks response = super.get(getUrl);
+	public void getNetwork() throws ClientProtocolException, IOException {
+		Networks response = super.get(networks);
 		// do other assertions
+		// 1. Has return value
+		Assert.assertNotNull(response);
+
+		// 2. Has non-empty name
+		Assert.assertTrue(response.items.size() > 0);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.items.get(0).name);
+		Assert.assertTrue(response.items.get(0).name.length() > 0);		
+
 		
 		System.out.println("---------------------------------------------------------------------------------------------");
 	}
-	/*
+	@Test
+	public void getChildNetworks() throws ClientProtocolException, IOException {
+		Networks response = super.get(ChildNetworks);
+		// do other assertions
+		// 1. Has return value
+		Assert.assertNotNull(response);
+
+		System.out.println("---------------------------------------------------------------------------------------------");
+	}
 	@Test
 	public void post() throws ClientProtocolException, IOException {
 		String postBody = new JSONObject() {{
@@ -45,7 +67,7 @@ public class NetworksTest extends TestBase<Networks, Object> {
 
 			private void put(String string, String string2, String string3, String string4, String string5,
 					String string6) {
-				// TODO Auto-generated method stub
+				
 				
 			}});
 		}}.toString();
@@ -53,5 +75,6 @@ public class NetworksTest extends TestBase<Networks, Object> {
 		
 		System.out.println("---------------------------------------------------------------------------------------------");
 	}
-	*/
+	
 }
+
