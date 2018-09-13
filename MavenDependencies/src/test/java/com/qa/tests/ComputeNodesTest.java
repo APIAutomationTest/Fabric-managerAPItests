@@ -13,13 +13,16 @@ import org.testng.annotations.Test;
 import com.qa.base.TestBase;
 
 public class ComputeNodesTest extends TestBase<ComputeNodes, Object> {
-	private static String getUrl = TestBase.prop.getProperty("URL_integration")
+	private static String computeNodes = TestBase.prop.getProperty("API_URL")
 			+ TestBase.prop.getProperty("serviceURL_computeNodes");
-	private static String getUrl1 = TestBase.prop.getProperty("URL_integration")
+	private static String computeNodesSpecifications = TestBase.prop.getProperty("API_URL")
 			+ TestBase.prop.getProperty("serviceURL_computeNodesSpecifications");
-	private static String getUrl2 = TestBase.prop.getProperty("URL_integration")
+	private static String ComputeHypervisor = TestBase.prop.getProperty("API_URL")
 			+ TestBase.prop.getProperty("serviceURL_ComputeHypervisor");
+	private static String computeSpecificationsId = TestBase.prop.getProperty("API_URL")
+			+ TestBase.prop.getProperty("serviceURL_computeSpecificationsId");
 	
+
 
 	public ComputeNodesTest() {
 		super(ComputeNodes.class, Object.class);
@@ -27,9 +30,15 @@ public class ComputeNodesTest extends TestBase<ComputeNodes, Object> {
 
 	@Test
 	public void getComputeNodes() throws ClientProtocolException, IOException {
-		ComputeNodes response = super.get(getUrl);
+		ComputeNodes response = super.get(computeNodes);
 
-		
+		Assert.assertNotNull(response);
+
+		// 2. Has non-empty name
+		Assert.assertTrue(response.items.size() > 0);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.items.get(0).name);
+		Assert.assertTrue(response.items.get(0).name.length() > 0);		
 
 		System.out.println(
 				"---------------------------------------------------------------------------------------------");
@@ -37,10 +46,15 @@ public class ComputeNodesTest extends TestBase<ComputeNodes, Object> {
 
 	@Test
 	public void getComputeNodesSpecifications() throws ClientProtocolException, IOException {
-		super.get(getUrl1, TestBase.RESPONSE_STATUS_CODE_200);
-		;
+		ComputeNodes response = super.get(computeNodesSpecifications);
 
-		// do other assertions
+		Assert.assertNotNull(response);
+
+		// 2. Has non-empty name
+		Assert.assertTrue(response.items.size() > 0);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.items.get(0).name);
+		Assert.assertTrue(response.items.get(0).name.length() > 0);		
 
 		System.out.println(
 				"---------------------------------------------------------------------------------------------");
@@ -48,11 +62,26 @@ public class ComputeNodesTest extends TestBase<ComputeNodes, Object> {
 
 	@Test
 	public void getComputeHypervisor() throws ClientProtocolException, IOException {
-		super.get(getUrl2, TestBase.RESPONSE_STATUS_CODE_200);
-		;
+		ComputeNodes response = super.get(ComputeHypervisor);
 
-		// do other assertions
+		Assert.assertNotNull(response);
 
+		// 2. Has non-empty name
+		Assert.assertTrue(response.items.size() > 0);
+		// 3. Has non-empty name
+		Assert.assertNotNull(response.items.get(0).name);
+		Assert.assertTrue(response.items.get(0).name.length() > 0);		
+
+		System.out.println(
+				"---------------------------------------------------------------------------------------------");
+	}
+	@Test
+	public void getComputespecificationId() throws ClientProtocolException, IOException {
+		ComputeNodes response = super.get(computeSpecificationsId);
+		
+		Assert.assertNotNull(response);
+
+		
 		System.out.println(
 				"---------------------------------------------------------------------------------------------");
 	}
