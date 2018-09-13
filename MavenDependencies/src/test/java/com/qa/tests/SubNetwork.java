@@ -10,4 +10,5 @@ public class SubNetwork {
 	public String customerName;
 	public int accountNumber;
 	public String type;
+	
 }
