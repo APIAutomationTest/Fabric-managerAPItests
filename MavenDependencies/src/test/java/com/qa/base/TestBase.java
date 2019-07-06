@@ -21,57 +21,84 @@ import com.qa.data.AuthenticationRequest;
 import com.qa.data.Token;
 import com.qa.util.TestUtil;
 
-public abstract class TestBase<GetResponseType, PostResponseType> {
+publicTestBase(Class<GetResponseType>t1, Class<PostResponseType>t2) {
+	this.getResponseClass = t1;
+	this.postResponseClass = t2;
 
-	public static int RESPONSE_STATUS_CODE_200 = 200;
-	public static int RESPONSE_STATUS_CODE_500 = 500;
-	public static int RESPONSE_STATUS_CODE_400 = 400;
-	public static int RESPONSE_STATUS_CODE_401 = 401;
-	public static int RESPONSE_STATUS_CODE_201 = 201;
-	public static int RESPONSE_STATUS_CODE_403 = 403;
-	public static int RESPONSE_STATUS_CODE_404 = 404;
-	public static int RESPONSE_STATUS_CODE_202 = 202;
-	public static Properties prop;
+publicstaticintRESPONSE_STATUS_CODE_200 = 200; 
+publicstaticintRESPONSE_STATUS_CODE_500 = 500;
+publicstaticintRESPONSE_STATUS_CODE_400 = 400;
+publicstaticintRESPONSE_STATUS_CODE_401 = 401;
+publicstaticintRESPONSE_STATUS_CODE_201 = 201;
+publicstaticintRESPONSE_STATUS_CODE_403 = 403;
+publicstaticintRESPONSE_STATUS_CODE_404 = 404;
+publicstaticintRESPONSE_STATUS_CODE_202 = 202;
+publicstaticintRESPONSE_STATUS_CODE_405 = 405;
 
-	private final Class<GetResponseType> getResponseClass;
-	private final Class<PostResponseType> postResponseClass;
+static {
+	try {
+		prop = newProperties();
+		FileInputStreamip = newFileInputStream(
+				System.getProperty("user.dir") + "/src/main/java/com/qa/config/config.properties");
+		prop.load(ip);
+	} catch (FileNotFoundExceptione) {
+		e.printStackTrace();
+	} catch (IOExceptione) {
+		e.printStackTrace();
+	}
+protectedstatic String getAccessToken() throwsJsonGenerationException, JsonMappingException, IOException {
+	returngetAccessToken(false);
+}
 
-	private static RestClient restClient = new RestClient();
-
-	protected static String accessToken;
-
-	private static final ObjectMapper MAPPER = new ObjectMapper();
-
-	static {
-		try {
-			prop = new Properties();
-			FileInputStream ip = new FileInputStream(
-					System.getProperty("user.dir") + "/src/main/java/com/qa/config/config.properties");
-			prop.load(ip);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+protectedstatic String getAccessToken(booleanisNegative) throwsJsonGenerationException, JsonMappingException, IOException {
+	if (isNegative) {
+		if (badAccessToken == null) {
+			returngetAccessToken(prop.getProperty("negative_client_id"), prop.getProperty("negative_client_secret"), prop.getProperty("negative_audience"), true);
 		}
+		returnbadAccessToken;
 	}
-
-	public TestBase(Class<GetResponseType> t1, Class<PostResponseType> t2) {
-		this.getResponseClass = t1;
-		this.postResponseClass = t2;
+	if (accessToken == null) {
+		returngetAccessToken(prop.getProperty("auth_client_id"), prop.getProperty("auth_client_secret"), prop.getProperty("auth_audience"), false);
 	}
+	returnaccessToken;
+}
 
-	protected static String getAccessToken() throws JsonGenerationException, JsonMappingException, IOException {
-		if (TestBase.accessToken == null) {
-			return getAccessToken(prop.getProperty("auth_client_id"), prop.getProperty("auth_client_secret"));
-		}
-		return TestBase.accessToken;
-	}
-
-	protected static String getAccessToken(String clientId, String clientSecret)
-			throws JsonGenerationException, JsonMappingException, IOException {
-
-		HashMap<String, String> headerMap = new HashMap<String, String>();
-		headerMap.put("Content-Type", "application/json");
+protectedstatic String getAccessToken(String clientId, String clientSecret, String audience, booleanisNegative)
+		throwsJsonGenerationException, JsonMappingException, IOException {
+	HashMap<String, String>headerMap = new HashMap<String, String>();
+-			headerMap.put("Content-Type", "application/json");
+-	I do also some other neccessery code to change object to Jason to string , check the status code , jasonstring then json to java object 
+-	// jackson API:
+-	
+-			AuthenticationRequestrequest = newAuthenticationRequest(clientId, clientSecret, audience, prop.getProperty("auth_grant_type"));
+-			
+-			
+-			// object to json to String:
+-			String requestString = MAPPER.writeValueAsString(request);
+-			String url = prop.getProperty("URL") + prop.getProperty("serviceURL");
+-			CloseableHttpResponsecloseableHttpResponse = restClient.post(url, requestString, headerMap);// call the api
+-	
+-			// validate response from API:
+-	
+-			// status code
+-			System.out.println(accessToken);
+-			intstatusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+-			Assert.assertEquals(statusCode, TestBase.RESPONSE_STATUS_CODE_200);
+-	
+-			// JosonString
+-			String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
+-			
+-			JSONObjectresponseJson = newJSONObject(responseString);
+-	
+-			// json to java object
+-			Token usersResObj = MAPPER.readValue(responseString, Token.class); // actual users object
+-			// System.out.println(usersResObj);
+-			if (isNegative) {
+-				badAccessToken = usersResObj.getAccess_token();
+-				returnbadAccessToken;
+-			} else {
+-				accessToken = usersResObj.getAccess_token();
+-				returnaccessToken;	
 
 		// jackson API:
 
@@ -106,79 +133,101 @@ public abstract class TestBase<GetResponseType, PostResponseType> {
 
 	}
 
-	protected GetResponseType get(String url) throws ClientProtocolException, IOException {
-		return get(url, TestBase.RESPONSE_STATUS_CODE_200);
-	}
+publicGetResponseTypeget(String url) throwsClientProtocolException, IOException {
+	returnget(url, TestBase.RESPONSE_STATUS_CODE_200, false);
+}
 
-	/**
-	 * Makes a get request to the given {@param url}, asserts the request is
-	 * successful and returns the JSON response.
-	 * 
-	 * @return JSON response object.
-	 * @throws IOException
-	 * @throws ClientProtocolException
-	 */
-	protected GetResponseType get(String url, int expectedStatusCode) throws ClientProtocolException, IOException {
-		HashMap<String, String> headerMap = new HashMap<String, String>();
-		headerMap.put("Authorization", "bearer " + TestBase.getAccessToken());
+publicGetResponseTypeget(String url, intexpectedStatusCode) {
+	returnget(url, expectedStatusCode, false);
+}
+
+/**
+ * Makes a get request to the given {@paramurl}, asserts the request is
+ * successful and returns the JSON response.
+ * 
+ * @return JSON response object.
+ * @throwsIOException
+ * @throwsClientProtocolException
+ */
+publicGetResponseTypeget(String url, intexpectedStatusCode, booleanisNegative) {
+	try {
+		HashMap<String, String>headerMap = new HashMap<String, String>();
+		headerMap.put("Authorization", "bearer " + TestBase.getAccessToken(isNegative));
 
 		System.out.printf("Sending request to %s\n", url);
 		// Call the API
-		CloseableHttpResponse closeableHttpResponse = restClient.get(url, headerMap);
+		CloseableHttpResponsecloseableHttpResponse = restClient.get(url, headerMap);
 
 		// Assert that the request was successful
-		int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+		intstatusCode = closeableHttpResponse.getStatusLine().getStatusCode();
 		Assert.assertEquals(statusCode, expectedStatusCode);
+		
 		
 		// If the request fails, don't check the object structure
 		if (expectedStatusCode / 100 != 2) {
-			return null;
+			returnnull;
 		}
 
 		Header[] headersArray = closeableHttpResponse.getAllHeaders();
 
 		// Print headers and response for debugging
-		HashMap<String, String> allHeaders = new HashMap<String, String>();
-		for (Header header : headersArray) {
+		HashMap<String, String>allHeaders = new HashMap<String, String>();
+		for (Header header :headersArray) {
 			allHeaders.put(header.getName(), header.getValue());
 		}
 		System.out.println("Header Array-->" + allHeaders);
 
 		String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
 		System.out.println("The response from get API: " + responseString);
+		
+		if (this.getResponseClass == String.class) {
+			return(GetResponseType)responseString;
+		}
+		
+		GetResponseTypereturnvalue = MAPPER.readValue(responseString, this.getResponseClass);
 
-		GetResponseType returnvalue = MAPPER.readValue(responseString, this.getResponseClass);
-
-		return returnvalue;
+		returnreturnvalue;
+	} catch (Exception e) {
+		thrownewRuntimeException(e);
 	}
 
-	protected PostResponseType post(String url, String postBody) throws ClientProtocolException, IOException {
-		HashMap<String, String> headerMap = new HashMap<String, String>();
-		headerMap.put("Content-Type", "application/json");
-		headerMap.put("Authorization", "bearer " + TestBase.getAccessToken());
 
-		System.out.printf("Sending request to %s\n", url);
-		// Call the API
-		CloseableHttpResponse closeableHttpResponse = restClient.post(url, postBody, headerMap);
+	}
 
-		// Assert that the request was successful
-		int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-		Assert.assertEquals(statusCode, TestBase.RESPONSE_STATUS_CODE_202);
-		
-		Header[] headersArray = closeableHttpResponse.getAllHeaders();
+publicPostResponseTypepost(String url, String postBody) throwsClientProtocolException, IOException {
+	returnpost(url, postBody, false);
+}
 
-		// Print headers and response for debugging
-		HashMap<String, String> allHeaders = new HashMap<String, String>();
-		for (Header header : headersArray) {
-			allHeaders.put(header.getName(), header.getValue());
-		}
-		System.out.println("Header Array-->" + allHeaders);
+publicPostResponseTypepost(String url, String postBody, booleanisNegative) throwsClientProtocolException, IOException {
+	HashMap<String, String>headerMap = new HashMap<String, String>();
+	headerMap.put("Content-Type", "application/json");
+	headerMap.put("Authorization", "bearer " + TestBase.getAccessToken(isNegative));
 
-		String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
-		System.out.println("The response from post API: " + responseString);
+	System.out.printf("Sending request to %s\n", url);
+	// Call the API
+	CloseableHttpResponsecloseableHttpResponse = restClient.post(url, postBody, headerMap);
 
-		PostResponseType returnvalue = MAPPER.readValue(responseString, this.postResponseClass);
+	//Assert that the request was successful
+	intstatusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+	Assert.assertEquals(statusCode, TestBase.RESPONSE_STATUS_CODE_202);
 
-		return returnvalue;
+	Header[] headersArray = closeableHttpResponse.getAllHeaders();
+
+	// Print headers and response for debugging
+	HashMap<String, String>allHeaders = new HashMap<String, String>();
+	for (Header header :headersArray) {
+		allHeaders.put(header.getName(), header.getValue());
+	}
+	System.out.println("Header Array-->" + allHeaders);
+
+	String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
+	System.out.println("The response from post API: " + responseString);
+
+	PostResponseTypereturnvalue = MAPPER.readValue(responseString, this.postResponseClass);
+	
+	
+	
+	returnreturnvalue;
+
 	}
 }
